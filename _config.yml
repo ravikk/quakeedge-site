@@ -1,0 +1,18 @@
+# ─────────────────────────────────────────────────────────────
+#  Site settings. ✎ Put your name on the "author" line.
+# ─────────────────────────────────────────────────────────────
+title: QuakeEdge
+author: "Your Name"
+description: "A science fair project: detecting earthquake P-waves on a low-cost accelerometer with a tiny neural network running on an ESP32-S3."
+
+# You don't need to change anything below this line.
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+collections:
+  notebook:
+    output: false
+exclude:
+  - README.md
+  - _templates

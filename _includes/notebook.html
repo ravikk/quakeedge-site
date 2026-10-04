@@ -1,0 +1,11 @@
+<ol class="timeline">
+{% assign entries = site.notebook | sort: "date" | reverse %}
+{% for e in entries %}
+  <li>
+    <time datetime="{{ e.date | date: '%Y-%m-%d' }}">{{ e.date | date: "%-d %b %Y" }}</time>
+    <h3>{{ e.title }}</h3>
+    {% for t in e.tags %}<span class="tag">{{ t }}</span>{% endfor %}{% for t in e.passed %}<span class="tag pass">{{ t }}</span>{% endfor %}
+    {{ e.content }}
+  </li>
+{% endfor %}
+</ol>

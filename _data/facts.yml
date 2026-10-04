@@ -1,0 +1,13 @@
+# The numbers shown in the grid on the home page.
+- value: ADXL355
+  label: MEMS accelerometer
+- value: ESP32-S3
+  label: microcontroller
+- value: 100 Hz
+  label: 3-axis, streaming
+- value: "22,185"
+  label: model parameters
+- value: 21.7 KiB
+  label: INT8 model size
+- value: 2.53 s
+  label: receptive field

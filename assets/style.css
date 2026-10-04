@@ -156,19 +156,32 @@ figcaption { font-size: .9rem; color: var(--muted); margin-top: .6rem; }
 @media (prefers-color-scheme: dark) { .tag.pass { background: #173a35; color: #7fd8c9; } }
 
 /* ---------- STUDENT-WRITES placeholders ----------
-   Every .todo block marks prose the student writes in their own words.
-   Replace the whole <div class="todo"> with your <p> paragraphs.
-   Before going live, search the site for  class="todo"  — there should be none left. */
-.todo {
+   In the Markdown files, any line starting with ">" shows up as a yellow
+   "Student writes" box. Delete those lines once that part is written. */
+.content blockquote {
   background: var(--todo-bg); border: 1px dashed var(--todo-line); color: var(--todo-ink);
   border-radius: 8px; padding: .85rem 1rem; margin: 1rem 0; font-size: .93rem;
 }
-.todo::before {
+.content blockquote::before {
   content: "✎ Student writes"; display: block;
   font: 700 .72rem/1 var(--mono); text-transform: uppercase; letter-spacing: .08em; margin-bottom: .5rem;
 }
-.todo ul { margin: .25rem 0 0; padding-left: 1.2rem; }
-.todo li { margin: .15rem 0; }
+.content blockquote p { margin: .3rem 0; }
+.content blockquote ul { margin: .25rem 0 0; padding-left: 1.2rem; }
+.content blockquote li { margin: .15rem 0; }
+
+/* ---------- Markdown content ---------- */
+.content { padding-top: 3.5rem; max-width: 50rem; }
+.content h1 { margin-bottom: 1.25rem; }
+.content h2 { margin-top: 3.5rem; }
+.content > p > img, .content li img { border-radius: 8px; border: 1px solid var(--line); background: #fff; margin: 2rem 0 .6rem; }
+.content p:has(> img) em { display: block; font-style: normal; font-size: .9rem; color: var(--muted); margin-bottom: 1.5rem; }
+.content .note { font-size: .9rem; color: var(--muted); }
+.content table { margin: 1rem 0; display: block; overflow-x: auto; }
+.seismo-wrap { margin: 1rem 0 .5rem; }
+.gallery { margin: 2rem 0; }
+.timeline img { border-radius: 8px; border: 1px solid var(--line); background: #fff; margin: 1rem 0 .5rem; }
+.timeline p:has(> img) em { display: block; font-style: normal; font-size: .9rem; color: var(--muted); }
 
 /* ---------- footer ---------- */
 footer {
