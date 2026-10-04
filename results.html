@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Results — QuakeEdge</title>
+  <meta name="description" content="Figures and results from the QuakeEdge earthquake detection project.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="./"><svg viewBox="0 0 34 18" aria-hidden="true"><path d="M0 9h8l3-6 4 12 4-14 3 10 2-2h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" style="color:var(--accent)"/></svg>QuakeEdge</a>
+    <nav>
+      <a href="./">Overview</a>
+      <a href="log.html">Lab notebook</a>
+      <a href="hardware.html">Hardware</a>
+      <a href="results.html" aria-current="page">Results</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <p class="eyebrow">Results</p>
+    <h1>What the data says so far</h1>
+    <div class="todo">Set expectations: these are results on public data plus bench tests. Final results on your own recordings (Corpus 2) come later. Say why false alarms per hour is your main metric.</div>
+  </div>
+
+  <div class="wrap-wide">
+    <section id="public-data">
+      <div class="wrap" style="margin:0 auto">
+        <h2>Public-data results</h2>
+        <div class="todo">Walk through panels A–D. For each one: what was measured, and what it means for the device. Use the "human-scale" version of false-alarm rates too (e.g. days between false alarms).</div>
+      </div>
+      <figure><img class="plot" src="assets/img/results_summary.png" alt="Four-panel figure. A: false alarms per hour rise from 0.67 on held-out STEAD to 1.99 on PNW and 6.18 on PNW accelerometers. B: share of earthquakes caught is 0.411 with a STEAD threshold, 0.814 recalibrated, 0.856 with self-calibrating CFAR. C: EQTransformer and PhaseNet also lose detections across the three datasets. D: 504 hours of accelerometer noise needed versus 38 hours available publicly." loading="lazy"><figcaption>Multi-seed results across three datasets.</figcaption></figure>
+    </section>
+
+    <section id="datasets">
+      <div class="wrap" style="margin:0 auto">
+        <h2>The datasets</h2>
+        <div class="todo">What's in STEAD, PNW, PNW Accelerometers and PNW Noise, and why you need all four.</div>
+      </div>
+      <figure><img class="plot" src="assets/img/datasets_overview.png" alt="Example three-component waveforms from STEAD, PNW, PNW Accelerometers and PNW Noise, with the P-wave onset and one-second positive window marked" loading="lazy"><figcaption>One example trace from each dataset.</figcaption></figure>
+    </section>
+
+    <section id="h1">
+      <div class="wrap" style="margin:0 auto">
+        <h2>Test H-1: sensor noise floor</h2>
+        <div class="todo">Does the sensor meet its datasheet? What are the peaks between 6 and 13 Hz, and why do they matter for a 2–15 Hz detector?</div>
+      </div>
+      <figure><img class="plot" src="assets/img/h1_noise_floor.png" alt="Amplitude spectral density of X, Y and Z axes over one hour at rest. The broadband level sits near or below the 25 micro-g per root hertz datasheet line, with resonance peaks of 6 to 13 times the floor inside the 2 to 15 Hz detection band" loading="lazy"><figcaption>One hour at rest on foam, breadboard build.</figcaption></figure>
+    </section>
+
+    <section id="h2">
+      <div class="wrap" style="margin:0 auto">
+        <h2>Test H-2: gravity check</h2>
+        <div class="todo">What does reaching all six gravity extremes show? Panel B labels the +1.28% gap a "sensitivity error". Your later notes (5 Sep) say it might be offset instead and was never measured. Decide what you can honestly claim, and say it.</div>
+      </div>
+      <figure><img class="plot" src="assets/img/h2_gravity.png" alt="Four-panel gravity test. A: three axes steady over 100 seconds. B: total measured acceleration about 9.93 versus true gravity 9.81 meters per second squared. C: histograms of per-axis jitter. D: each axis reaches beyond plus and minus 9.81 in both directions" loading="lazy"><figcaption>The board at rest, and then rotated through all six orientations.</figcaption></figure>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="inner">
+    <span>© 2026 <!-- STUDENT: your name --> · QuakeEdge</span>
+    <span><a href="./">Back to overview</a></span>
+  </div>
+</footer>
+</body>
+</html>

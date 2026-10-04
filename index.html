@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QuakeEdge — Earthquake detection project</title>
+  <meta name="description" content="A science fair project: detecting earthquake P-waves on a low-cost accelerometer with a tiny neural network running on an ESP32-S3.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="./"><svg viewBox="0 0 34 18" aria-hidden="true"><path d="M0 9h8l3-6 4 12 4-14 3 10 2-2h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" style="color:var(--accent)"/></svg>QuakeEdge</a>
+    <nav>
+      <a href="./" aria-current="page">Overview</a>
+      <a href="log.html">Lab notebook</a>
+      <a href="hardware.html">Hardware</a>
+      <a href="results.html">Results</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <p class="eyebrow">Science fair project · 2026–27</p>
+    <h1>Catching the first tremor of an earthquake on a tiny, low-cost device</h1>
+    <div class="todo">One or two sentences, in plain language, saying what this project is. Imagine explaining it to a friend who knows nothing about earthquakes.
+      <ul><li>What does the device do?</li><li>Why does it matter that it's cheap and small?</li></ul>
+    </div>
+  </div>
+
+  <div class="wrap-wide">
+    <svg class="seismo" viewBox="0 0 1200 90" preserveAspectRatio="none" role="img" aria-label="Illustrative seismogram: quiet background, then a small P-wave arrival, then a larger S-wave">
+      <path class="base" d="M0 45H1200"/>
+      <path class="trace" d="M0 45.3L3 44.4L6 45.3L9 45.4L12 46.1L15 45.3L18 43.7L21 44.5L24 43.8L27 44.7L30 44.5L33 44.8L36 47.0L39 44.0L42 44.4L45 44.4L48 47.0L51 47.1L54 46.1L57 45.6L60 44.6L63 45.1L66 44.4L69 45.8L72 44.6L75 44.5L78 45.8L81 42.9L84 44.3L87 43.6L90 45.7L93 45.9L96 45.4L99 45.1L102 44.2L105 44.7L108 45.5L111 46.1L114 45.6L117 43.5L120 46.0L123 44.7L126 44.5L129 46.8L132 44.9L135 43.4L138 47.4L141 45.4L144 45.1L147 46.0L150 44.4L153 45.1L156 46.8L159 44.0L162 44.2L165 43.9L168 43.3L171 44.6L174 44.9L177 46.6L180 44.3L183 45.7L186 45.5L189 46.5L192 46.2L195 45.6L198 43.5L201 47.4L204 46.7L207 44.7L210 43.3L213 44.3L216 47.3L219 48.0L222 44.6L225 45.9L228 46.3L231 43.8L234 43.7L237 44.8L240 44.7L243 44.5L246 43.1L249 44.3L252 44.4L255 44.3L258 46.9L261 43.5L264 43.9L267 44.4L270 47.4L273 45.8L276 44.0L279 47.2L282 45.2L285 43.8L288 46.6L291 43.1L294 44.3L297 45.2L300 44.6L303 44.2L306 44.9L309 43.6L312 45.8L315 45.5L318 43.7L321 45.0L324 46.1L327 43.9L330 43.2L333 45.5L336 46.7L339 45.2L342 45.2L345 45.4L348 43.3L351 46.2L354 43.5L357 46.5L360 45.9L363 44.2L366 43.6L369 44.0L372 44.6L375 44.8L378 44.8L381 44.3L384 45.2L387 44.7L390 44.3L393 45.0L396 44.1L399 44.3L402 42.6L405 44.6L408 45.5L411 45.4L414 45.0L417 43.9L420 45.4L423 44.5L426 42.8L429 48.1L432 46.3L435 44.7L438 44.5L441 44.7L444 45.5L447 44.2L450 44.7L453 45.6L456 42.1L459 44.6L462 45.7L465 45.1L468 45.3L471 45.1L474 48.3L477 45.6L480 43.8L483 46.4L486 45.1L489 43.9L492 44.0L495 43.2L498 47.0L501 45.4L504 45.4L507 44.3L510 43.7L513 48.2L516 43.7L519 46.7L522 45.5L525 47.7L528 39.7L531 42.7L534 53.8L537 44.4L540 32.4L543 47.1L546 55.8L549 39.4L552 34.2L555 50.4L558 50.0L561 40.3L564 37.0L567 52.2L570 50.4L573 36.8L576 40.6L579 51.9L582 49.6L585 39.2L588 42.8L591 53.6L594 46.4L597 39.6L600 44.4L603 50.7L606 41.3L609 40.1L612 47.7L615 51.6L618 40.7L621 38.6L624 50.0L627 46.8L630 39.5L633 42.4L636 51.8L639 45.3L642 40.6L645 44.6L648 49.0L651 44.9L654 38.9L657 46.5L660 47.7L663 42.3L666 39.5L669 46.6L672 49.2L675 41.9L678 42.0L681 47.1L684 45.7L687 42.9L690 45.9L693 48.1L696 48.6L699 41.3L702 43.7L705 48.4L708 45.4L711 41.4L714 44.9L717 45.9L720 44.7L723 41.4L726 43.9L729 45.1L732 44.8L735 42.1L738 48.5L741 47.8L744 46.0L747 42.5L750 48.0L753 46.0L756 43.6L759 44.4L762 50.6L765 47.2L768 32.4L771 26.9L774 35.0L777 55.3L780 73.9L783 67.5L786 41.4L789 17.3L792 22.2L795 44.5L798 65.2L801 67.8L804 52.3L807 30.6L810 21.7L813 32.6L816 54.5L819 68.1L822 60.4L825 42.5L828 28.1L831 29.0L834 43.8L837 57.9L840 64.7L843 52.7L846 38.5L849 26.8L852 35.6L855 52.5L858 58.7L861 57.3L864 47.9L867 34.2L870 30.7L873 41.9L876 53.6L879 57.6L882 49.9L885 38.9L888 31.7L891 35.9L894 46.2L897 58.1L900 54.0L903 44.0L906 36.6L909 35.8L912 39.8L915 52.7L918 53.7L921 47.6L924 43.1L927 35.2L930 36.0L933 46.4L936 51.8L939 50.8L942 47.2L945 39.9L948 37.3L951 40.7L954 48.8L957 52.5L960 50.4L963 43.3L966 37.9L969 40.0L972 46.0L975 50.8L978 47.4L981 45.2L984 40.4L987 42.6L990 41.9L993 46.8L996 47.8L999 47.8L1002 44.3L1005 40.1L1008 43.2L1011 43.5L1014 48.2L1017 49.9L1020 44.6L1023 40.5L1026 42.9L1029 43.6L1032 45.9L1035 48.4L1038 48.3L1041 45.7L1044 39.4L1047 40.9L1050 46.0L1053 48.8L1056 45.9L1059 45.1L1062 41.3L1065 41.1L1068 44.3L1071 45.6L1074 50.1L1077 47.9L1080 45.0L1083 42.4L1086 43.6L1089 44.5L1092 46.0L1095 46.8L1098 45.2L1101 43.8L1104 43.4L1107 42.7L1110 45.3L1113 47.7L1116 47.4L1119 45.1L1122 43.7L1125 43.2L1128 44.5L1131 45.8L1134 46.7L1137 47.4L1140 44.0L1143 42.3L1146 43.3L1149 45.4L1152 45.7L1155 47.3L1158 47.4L1161 44.0L1164 44.9L1167 43.6L1170 46.9L1173 49.3L1176 47.0L1179 42.8L1182 44.4L1185 45.8L1188 45.9L1191 45.2L1194 45.3L1197 45.0L1200 42.6"/>
+      <text x="522" y="12" font-size="11" fill="currentColor" font-family="ui-monospace,monospace">P</text>
+      <text x="762" y="12" font-size="11" fill="currentColor" font-family="ui-monospace,monospace">S</text>
+    </svg>
+  </div>
+
+  <div class="wrap">
+    <div class="facts" aria-label="Key numbers">
+      <div><b>ADXL355</b><span>MEMS accelerometer</span></div>
+      <div><b>ESP32-S3</b><span>microcontroller</span></div>
+      <div><b>100 Hz</b><span>3-axis, streaming</span></div>
+      <div><b>22,185</b><span>model parameters</span></div>
+      <div><b>21.7 KiB</b><span>INT8 model size</span></div>
+      <div><b>2.53 s</b><span>receptive field</span></div>
+    </div>
+
+    <section>
+      <h2>The problem</h2>
+      <div class="todo">
+        <ul>
+          <li>What is a P-wave, and why do the seconds before the S-wave matter?</li>
+          <li>Why don't earthquake early-warning systems reach everyone today?</li>
+          <li>What goes wrong when you put a cheap sensor in a house? (Think of doors, footsteps, washing machines.)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>My approach</h2>
+      <div class="todo">
+        <ul>
+          <li>Two stages: what does each stage do?</li>
+          <li>Why a streaming TCN instead of the windowed models other people use?</li>
+          <li>Why does detection latency matter more than inference time? Say it in your own words.</li>
+        </ul>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Design choice</th><th>Value</th></tr>
+          <tr><td>Model</td><td>Streaming dilated TCN, causal 1-D convolutions, kernel 3</td></tr>
+          <tr><td>Layers</td><td>12 (two stacks, dilations 1, 2, 4, 8, 16, 32)</td></tr>
+          <tr><td>Parameters</td><td>22,185 (budget &lt; 30k)</td></tr>
+          <tr><td>Model size</td><td>21.7 KiB INT8 · 6.5 KiB streaming state</td></tr>
+          <tr><td>Input</td><td>100 Hz, 3-axis, 2–15 Hz causal Butterworth bandpass</td></tr>
+          <tr><td>Primary metric</td><td>False alarms per hour, with Poisson confidence intervals</td></tr>
+          <tr><td>Headline latency</td><td>Detection latency (P-onset to alert), not inference time</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>Where things stand</h2>
+      <div class="todo">A short paragraph on what's done, what you're doing now (for example, Corpus 2 recordings) and what's next. Update it whenever you post a notebook entry.</div>
+    </section>
+
+    <section>
+      <h2>Explore</h2>
+      <div class="cards">
+        <a class="card" href="log.html"><h3>Lab notebook →</h3><p>Dated entries, from the first idea to the latest test.</p></a>
+        <a class="card" href="hardware.html"><h3>Hardware →</h3><p>The sensor, the board, the wiring and the bench tests.</p></a>
+        <a class="card" href="results.html"><h3>Results →</h3><p>Figures from the experiments so far.</p></a>
+      </div>
+    </section>
+
+    <section>
+      <h2>About me</h2>
+      <div class="todo">Who you are, your school and grade, and what got you interested in earthquakes. Add your mentor too, if you want.</div>
+    </section>
+
+    <section>
+      <h2>How I used AI tools</h2>
+      <div class="todo">ISEF expects you to disclose AI assistance. Say plainly which parts of the work were AI-assisted (coding, literature search, etc.) and how you checked them. Your <code>docs/AI_USE_LOG.md</code> is the record to draw on.</div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="inner">
+    <span>© 2026 <!-- STUDENT: your name --> · QuakeEdge</span>
+    <span>Updated <!-- STUDENT: date --></span>
+  </div>
+</footer>
+</body>
+</html>

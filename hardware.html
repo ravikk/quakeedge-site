@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hardware — QuakeEdge</title>
+  <meta name="description" content="The sensor, microcontroller, wiring and bench tests behind QuakeEdge.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="./"><svg viewBox="0 0 34 18" aria-hidden="true"><path d="M0 9h8l3-6 4 12 4-14 3 10 2-2h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" style="color:var(--accent)"/></svg>QuakeEdge</a>
+    <nav>
+      <a href="./">Overview</a>
+      <a href="log.html">Lab notebook</a>
+      <a href="hardware.html" aria-current="page">Hardware</a>
+      <a href="results.html">Results</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <p class="eyebrow">Hardware &amp; build</p>
+    <h1>The device</h1>
+    <div class="todo">Introduce the hardware: what each part does, and why you chose a MEMS accelerometer over a geophone or seismometer.</div>
+  </div>
+
+  <div class="wrap-wide">
+    <div class="gallery">
+      <figure><img src="assets/img/hw-setup-b.jpg" alt="ESP32-S3 development board wired to an ADXL355 accelerometer breakout on a desk"><figcaption>Bench setup: the ESP32-S3 board (top) and the ADXL355 breakout (bottom).</figcaption></figure>
+      <figure><img src="assets/img/hw-setup-a.jpg" alt="Overhead view of the ESP32-S3 board with eight colored jumper wires running to the sensor"><figcaption>Wiring, viewed from above.</figcaption></figure>
+      <figure><img src="assets/img/hw-sensor.jpg" alt="Close-up of the EVAL-ADXL355-PMDZ breakout board held between fingers, with jumper wires attached"><figcaption>The EVAL-ADXL355-PMDZ sensor board.</figcaption></figure>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section>
+      <h2>Parts</h2>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Part</th><th>What it is</th><th>Role</th></tr>
+          <tr><td>ADXL355 (EVAL-ADXL355-PMDZ)</td><td>3-axis, low-noise MEMS accelerometer</td><td>Senses ground motion</td></tr>
+          <tr><td>ESP32-S3 (WROOM-1-N16R8 class)</td><td>Dual-core Xtensa LX7 microcontroller, 512 KB internal SRAM</td><td>Runs filtering and the neural network on the device</td></tr>
+          <tr><td>Jumper wires</td><td>SPI bus plus one interrupt line</td><td>Connect the sensor to the board</td></tr>
+        </table>
+      </div>
+      <div class="todo">Add anything missing (power, enclosure, mount) and roughly what the whole build costs.</div>
+    </section>
+
+    <section>
+      <h2>Wiring</h2>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Signal</th><th>ESP32-S3 GPIO</th></tr>
+          <tr><td>CS</td><td><code>10</code></td></tr>
+          <tr><td>MOSI</td><td><code>11</code></td></tr>
+          <tr><td>SCLK</td><td><code>12</code></td></tr>
+          <tr><td>MISO</td><td><code>13</code></td></tr>
+          <tr><td>INT1 (sensor P1 pin 7)</td><td><code>4</code></td></tr>
+        </table>
+      </div>
+      <p style="font-size:.9rem;color:var(--muted)">From <code>firmware/adxl355_capture/main/capture.c</code>.</p>
+    </section>
+
+    <section>
+      <h2>Bench tests</h2>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Test</th><th>Date</th><th>Outcome</th></tr>
+          <tr><td>Bring-up gate: sensor identified over SPI</td><td>30 Aug 2026</td><td><span class="tag pass">passed</span> 18/18 reads</td></tr>
+          <tr><td>H-2: gravity, all six orientations</td><td>30 Aug 2026</td><td><span class="tag pass">passed</span></td></tr>
+          <tr><td>H-1: noise floor, 1 h at rest on foam</td><td>5 Sep 2026</td><td>Recorded: <a href="results.html#h1">see figure</a></td></tr>
+        </table>
+      </div>
+      <div class="todo">For each test, say what it checks and why it has to pass before the next step. Explain why the mount matters, too.</div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="inner">
+    <span>© 2026 <!-- STUDENT: your name --> · QuakeEdge</span>
+    <span><a href="./">Back to overview</a></span>
+  </div>
+</footer>
+</body>
+</html>

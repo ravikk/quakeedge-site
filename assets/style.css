@@ -1,0 +1,177 @@
+/* QuakeEdge project site — one stylesheet for every page. */
+
+:root {
+  --bg: #f7f5f0;
+  --surface: #ffffff;
+  --ink: #1d1f21;
+  --muted: #5d6166;
+  --line: #e2ddd3;
+  --accent: #b5361f;        /* seismograph red */
+  --accent-soft: #f6e3de;
+  --teal: #17574f;
+  --todo-bg: #fff8db;
+  --todo-line: #d9b300;
+  --todo-ink: #5c4a00;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --max: 46rem;
+  --wide: 68rem;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131517;
+    --surface: #1b1e21;
+    --ink: #e8e6e1;
+    --muted: #9ba1a6;
+    --line: #2d3236;
+    --accent: #ef6a4f;
+    --accent-soft: #3a211b;
+    --teal: #5cc2b3;
+    --todo-bg: #2e2810;
+    --todo-line: #a88a00;
+    --todo-ink: #f0dc8a;
+    color-scheme: dark;
+  }
+  /* Figures are drawn on white; keep them on a white card so they stay legible. */
+  figure img.plot { background: #fff; }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 17px/1.65 var(--sans);
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--accent); text-underline-offset: 2px; }
+a:hover { text-decoration-thickness: 2px; }
+
+/* ---------- header / nav ---------- */
+.site-header {
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+  position: sticky; top: 0; z-index: 10;
+}
+.site-header .inner {
+  max-width: var(--wide); margin: 0 auto; padding: .7rem 1.25rem;
+  display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1.5rem;
+}
+.brand {
+  font-weight: 700; letter-spacing: -.01em; color: var(--ink);
+  text-decoration: none; display: flex; align-items: center; gap: .5rem;
+}
+.brand svg { width: 34px; height: 18px; }
+nav { display: flex; flex-wrap: wrap; gap: .25rem 1.1rem; margin-left: auto; }
+nav a {
+  color: var(--muted); text-decoration: none; font-size: .95rem;
+  padding: .2rem 0; border-bottom: 2px solid transparent;
+}
+nav a:hover { color: var(--ink); }
+nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--accent); }
+
+/* ---------- layout ---------- */
+main { padding: 0 1.25rem 4rem; }
+.wrap { max-width: var(--max); margin: 0 auto; }
+.wrap-wide { max-width: var(--wide); margin: 0 auto; }
+section { margin-top: 3.5rem; }
+h1, h2, h3 { line-height: 1.2; letter-spacing: -.015em; }
+h1 { font-size: clamp(2rem, 5vw, 3.1rem); margin: 0 0 .75rem; }
+h2 { font-size: 1.6rem; margin: 0 0 1rem; }
+h3 { font-size: 1.15rem; margin: 1.75rem 0 .5rem; }
+.eyebrow {
+  font: 600 .78rem/1 var(--mono); text-transform: uppercase; letter-spacing: .08em;
+  color: var(--accent); margin: 0 0 .75rem;
+}
+.lede { font-size: 1.2rem; color: var(--muted); }
+p, li { max-width: 68ch; }
+
+/* ---------- hero ---------- */
+.hero { padding: 4rem 0 1rem; }
+.seismo { width: 100%; height: 90px; margin: 2rem 0 0; color: var(--accent); }
+.seismo path { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linejoin: round; }
+.seismo .base { stroke: var(--line); stroke-width: 1; }
+@media (prefers-reduced-motion: no-preference) {
+  .seismo .trace {
+    stroke-dasharray: 2600; stroke-dashoffset: 2600;
+    animation: draw 3.2s ease-out .3s forwards;
+  }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+}
+
+/* ---------- spec facts ---------- */
+.facts {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(10.5rem, 1fr));
+  gap: 1px; background: var(--line); border: 1px solid var(--line);
+  border-radius: 10px; overflow: hidden; margin: 1.5rem 0;
+}
+.facts div { background: var(--surface); padding: 1rem 1.1rem; }
+.facts b { display: block; font: 600 1.35rem/1.2 var(--mono); color: var(--ink); }
+.facts span { font-size: .85rem; color: var(--muted); }
+
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+table { border-collapse: collapse; width: 100%; font-size: .95rem; }
+th, td { text-align: left; padding: .55rem .75rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-weight: 600; color: var(--muted); font-size: .82rem; text-transform: uppercase; letter-spacing: .04em; }
+td code, p code, li code { font: .88em var(--mono); background: var(--accent-soft); padding: .05em .3em; border-radius: 4px; }
+
+/* ---------- cards / page links ---------- */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1rem; }
+.card {
+  display: block; background: var(--surface); border: 1px solid var(--line);
+  border-radius: 10px; padding: 1.2rem 1.25rem; color: var(--ink); text-decoration: none;
+  transition: border-color .15s, transform .15s;
+}
+.card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.card h3 { margin: 0 0 .35rem; }
+.card p { margin: 0; color: var(--muted); font-size: .93rem; }
+
+/* ---------- figures ---------- */
+figure { margin: 2rem 0; }
+figure img { border-radius: 8px; border: 1px solid var(--line); }
+figcaption { font-size: .9rem; color: var(--muted); margin-top: .6rem; }
+.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1rem; }
+.gallery figure { margin: 0; }
+.gallery img { aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
+
+/* ---------- timeline (lab notebook) ---------- */
+.timeline { list-style: none; padding: 0; margin: 2rem 0; border-left: 2px solid var(--line); }
+.timeline > li { position: relative; padding: 0 0 2.25rem 1.6rem; max-width: none; }
+.timeline > li::before {
+  content: ""; position: absolute; left: -7px; top: .45rem;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--surface); border: 2px solid var(--accent);
+}
+.timeline time { font: 600 .82rem var(--mono); color: var(--accent); }
+.timeline h3 { margin: .15rem 0 .5rem; }
+.tag {
+  display: inline-block; font: 600 .7rem/1 var(--mono); text-transform: uppercase;
+  letter-spacing: .05em; padding: .3rem .45rem; border-radius: 4px;
+  background: var(--accent-soft); color: var(--accent); margin-right: .3rem; vertical-align: middle;
+}
+.tag.pass { background: #dff1ec; color: #17574f; }
+@media (prefers-color-scheme: dark) { .tag.pass { background: #173a35; color: #7fd8c9; } }
+
+/* ---------- STUDENT-WRITES placeholders ----------
+   Every .todo block marks prose the student writes in their own words.
+   Replace the whole <div class="todo"> with your <p> paragraphs.
+   Before going live, search the site for  class="todo"  — there should be none left. */
+.todo {
+  background: var(--todo-bg); border: 1px dashed var(--todo-line); color: var(--todo-ink);
+  border-radius: 8px; padding: .85rem 1rem; margin: 1rem 0; font-size: .93rem;
+}
+.todo::before {
+  content: "✎ Student writes"; display: block;
+  font: 700 .72rem/1 var(--mono); text-transform: uppercase; letter-spacing: .08em; margin-bottom: .5rem;
+}
+.todo ul { margin: .25rem 0 0; padding-left: 1.2rem; }
+.todo li { margin: .15rem 0; }
+
+/* ---------- footer ---------- */
+footer {
+  border-top: 1px solid var(--line); padding: 2rem 1.25rem; color: var(--muted); font-size: .88rem;
+}
+footer .inner { max-width: var(--wide); margin: 0 auto; display: flex; flex-wrap: wrap; gap: .5rem 2rem; justify-content: space-between; }

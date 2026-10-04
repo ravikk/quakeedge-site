@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lab notebook — QuakeEdge</title>
+  <meta name="description" content="Dated entries from the QuakeEdge earthquake detection project.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="inner">
+    <a class="brand" href="./"><svg viewBox="0 0 34 18" aria-hidden="true"><path d="M0 9h8l3-6 4 12 4-14 3 10 2-2h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" style="color:var(--accent)"/></svg>QuakeEdge</a>
+    <nav>
+      <a href="./">Overview</a>
+      <a href="log.html" aria-current="page">Lab notebook</a>
+      <a href="hardware.html">Hardware</a>
+      <a href="results.html">Results</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <p class="eyebrow">Lab notebook</p>
+    <h1>What I did, and when</h1>
+    <div class="todo">A sentence on how this page works: newest entries at the top? Does it mirror your physical Data Book?</div>
+  </div>
+
+  <div class="wrap">
+    <!--
+      HOW TO ADD AN ENTRY — copy this block to the top of the list and fill it in:
+
+      <li>
+        <time datetime="2026-10-10">10 Oct 2026</time>
+        <h3>Short title of what happened</h3>
+        <span class="tag">hardware</span>
+        <p>What you did, what you expected, what actually happened, what you'll do next.</p>
+        <figure><img src="assets/img/your-figure.png" alt="Describe the figure"><figcaption>Caption</figcaption></figure>
+      </li>
+
+      Tags in use: design, data, model, results, hardware, reading, field. Add class="tag pass" for a passed test.
+    -->
+    <ol class="timeline" reversed>
+
+      <li>
+        <time datetime="2026-10-03">3 Oct 2026</time>
+        <h3>Mounting diagnosis and the Corpus 2 field protocol</h3>
+        <span class="tag">hardware</span><span class="tag">field</span>
+        <div class="todo">
+          <ul>
+            <li>What did the mount diagnosis show about the peaks in the H-1 noise floor?</li>
+            <li>You tested the claim that jumper wires add electrical noise. What did you find?</li>
+            <li>What is Corpus 2, and how will you collect it?</li>
+          </ul>
+        </div>
+      </li>
+
+      <li>
+        <time datetime="2026-09-05">5 Sep 2026</time>
+        <h3>Capture firmware, a live scope, and Test H-1 (noise floor)</h3>
+        <span class="tag">hardware</span><span class="tag pass">H-1 recorded</span>
+        <div class="todo">
+          <ul>
+            <li>What does the FIFO capture firmware do?</li>
+            <li>How did you run H-1 (1 hour at rest on foam), and what did the noise floor look like next to the datasheet?</li>
+            <li>The +1.28% scale error from H-2: could it be offset rather than sensitivity? How would you tell?</li>
+          </ul>
+        </div>
+        <figure><img class="plot" src="assets/img/h1_noise_floor.png" alt="Amplitude spectral density of the three accelerometer axes over one hour at rest, compared with the ADXL355 datasheet noise level, with resonance peaks marked inside the 2–15 Hz detection band" loading="lazy"><figcaption>Test H-1 noise floor. <a href="results.html#h1">More on the Results page.</a></figcaption></figure>
+      </li>
+
+      <li>
+        <time datetime="2026-09-01">1 Sep 2026</time>
+        <h3>Reading the prior art</h3>
+        <span class="tag">reading</span>
+        <div class="todo">
+          <ul>
+            <li>Which papers did you read in full?</li>
+            <li>What is the closest existing work (LightEQ), and how is your project different?</li>
+          </ul>
+        </div>
+      </li>
+
+      <li>
+        <time datetime="2026-08-30">30 Aug 2026</time>
+        <h3>First hardware: sensor bring-up and Test H-2 (gravity)</h3>
+        <span class="tag">hardware</span><span class="tag pass">bring-up passed</span><span class="tag pass">H-2 passed</span>
+        <div class="todo">
+          <ul>
+            <li>The bring-up gate: the ADXL355 identified over SPI, 18 of 18 reads. What were you checking, and why does it come first?</li>
+            <li>H-2: turning the sensor to reach all six gravity extremes. What does that prove?</li>
+            <li>What surprised you about the board?</li>
+          </ul>
+        </div>
+        <figure><img src="assets/img/hw-setup-b.jpg" alt="ESP32-S3 development board connected by eight jumper wires to a blue ADXL355 breakout board on a desk" loading="lazy"><figcaption>The first bench setup.</figcaption></figure>
+      </li>
+
+      <li>
+        <time datetime="2026-08-30">30 Aug 2026</time>
+        <h3>Adaptive thresholds (CFAR)</h3>
+        <span class="tag">results</span>
+        <div class="todo">This was your idea. Explain it: why does a threshold calibrated on one sensor fail on another, and how does a self-calibrating threshold fix that without labelled earthquakes?</div>
+      </li>
+
+      <li>
+        <time datetime="2026-08-30">30 Aug 2026</time>
+        <h3>First multi-seed results on public data</h3>
+        <span class="tag">model</span><span class="tag">results</span>
+        <div class="todo">
+          <ul>
+            <li>What is the "domain ladder" (STEAD → PNW → PNW Accelerometers)?</li>
+            <li>What happened to false alarms as you moved down the ladder?</li>
+            <li>How did PhaseNet and EQTransformer do on the same test?</li>
+          </ul>
+        </div>
+      </li>
+
+      <li>
+        <time datetime="2026-08-30">30 Aug 2026</time>
+        <h3>Building the data pipeline</h3>
+        <span class="tag">data</span>
+        <div class="todo">
+          <ul>
+            <li>Why can't you use STEAD's own train/test split? (Leakage!)</li>
+            <li>Why must preprocessing be causal, i.e. <code>sosfilt</code> rather than <code>sosfiltfilt</code>?</li>
+            <li>How did you design the training labels?</li>
+          </ul>
+        </div>
+      </li>
+
+      <li>
+        <time datetime="2026-08-29">29 Aug 2026</time>
+        <h3>Project set-up and choosing the architecture</h3>
+        <span class="tag">design</span>
+        <div class="todo">Why did you pick a streaming dilated TCN? What else did you consider and reject?</div>
+      </li>
+
+    </ol>
+  </div>
+</main>
+
+<footer>
+  <div class="inner">
+    <span>© 2026 <!-- STUDENT: your name --> · QuakeEdge</span>
+    <span><a href="./">Back to overview</a></span>
+  </div>
+</footer>
+</body>
+</html>
